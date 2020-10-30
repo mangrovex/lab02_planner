@@ -21,7 +21,6 @@
                       entityClass="com.company.planner.entity.Session" openMode="DIALOG"
                       screenClass="com.company.planner.web.screens.session.SessionEdit"/>
     </facets>
-
     <layout expand="tabSheet01"
             spacing="true">
         <filter id="filter"
