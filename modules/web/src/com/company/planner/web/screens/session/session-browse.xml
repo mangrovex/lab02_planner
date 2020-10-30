@@ -14,9 +14,13 @@
             </loader>
         </collection>
     </data>
-    <dialogMode height="600"    @Inject
-    private EditorScreenFacet<Session, SessionEdit> sessionEditEditorScreenFacet;
+    <dialogMode height="600"
                 width="800"/>
+    <facets>
+        <editorScreen id="sessionEditorScreen" container="sessionDc" editMode="EDIT"
+                      entityClass="com.company.planner.entity.Session" openMode="DIALOG"
+                      screenClass="com.company.planner.web.screens.session.SessionEdit"/>
+    </facets>
     <layout expand="tabSheet01"
             spacing="true">
         <filter id="filter"

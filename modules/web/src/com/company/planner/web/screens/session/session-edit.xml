@@ -12,11 +12,6 @@
     </data>
     <dialogMode height="600"
                 width="800"/>
-    <facets>
-        <editorScreen id="sessionEditorScreen" container="sessionDc" editMode="EDIT"
-                      entityClass="com.company.planner.entity.Session" openMode="DIALOG"
-                      screenClass="com.company.planner.web.screens.session.SessionEdit"/>
-    </facets>
     <layout expand="editActions" spacing="true">
         <form id="form" dataContainer="sessionDc">
             <column width="250px">
