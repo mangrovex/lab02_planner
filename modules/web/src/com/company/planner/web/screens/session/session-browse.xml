@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="sessionsTable"
+        messagesPack="com.company.planner.web.screens.session">
+    <data readOnly="true">
+        <collection id="sessionsDc"
+                    class="com.company.planner.entity.Session"
+                    view="_local">
+            <loader id="sessionsDl">
+                <query>
+                    <![CDATA[select e from planner_Session e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"    @Inject
+    private EditorScreenFacet<Session, SessionEdit> sessionEditEditorScreenFacet;
+                width="800"/>
+    <layout expand="tabSheet01"
+            spacing="true">
+        <filter id="filter"
+                applyTo="sessionsTable"
+                dataLoader="sessionsDl">
+            <properties include=".*"/>
+        </filter>
+        <tabSheet id="tabSheet01">
+            <tab id="calendar">
+                <calendar id="calendarId01" dataContainer="sessionsDc" descriptionProperty="description"
+                          captionProperty="topic" lastVisibleHourOfDay="19" firstVisibleHourOfDay="5"
+                          startDateProperty="startDate" endDateProperty="endDate" firstVisibleDayOfWeek="2"
+                          lastVisibleDayOfWeek="6"
+                />
+            </tab>
+            <tab id="grid">
+                <groupTable id="sessionsTable"
+                            width="100%"
+                            dataContainer="sessionsDc">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="edit" type="edit"/>
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="topic"/>
+                        <column id="startDate"/>
+                        <column id="endDate"/>
+                        <column id="duration"/>
+                        <column id="description"/>
+                    </columns>
+                    <rowsCount/>
+                    <buttonsPanel id="buttonsPanel"
+                                  alwaysVisible="true">
+                        <button id="createBtn" action="sessionsTable.create"/>
+                        <button id="editBtn" action="sessionsTable.edit"/>
+                        <button id="removeBtn" action="sessionsTable.remove"/>
+                    </buttonsPanel>
+                </groupTable>
+
+            </tab>
+        </tabSheet>
+
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

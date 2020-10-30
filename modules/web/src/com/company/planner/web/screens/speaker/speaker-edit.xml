@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.company.planner.web.screens.speaker">
+    <data>
+        <instance id="speakerDc"
+                  class="com.company.planner.entity.Speaker"
+                  view="_local">
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="speakerDc">
+            <column width="250px">
+                <textField id="firstNameField" property="firstName"/>
+                <textField id="lastNameField" property="lastName" stylename="align-right"/>
+                <textField id="emailField" property="email">
+                    <validators>
+                        <regexp regexp="^(.+)@(.+)$" message="msg://mailError"/>
+                    </validators>
+                </textField>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>
